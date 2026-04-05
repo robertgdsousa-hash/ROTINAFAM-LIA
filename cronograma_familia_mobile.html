@@ -1,0 +1,147 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .wrap { padding: 0.5rem 0 2rem; max-width: 480px; margin: 0 auto; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 1.2rem; flex-wrap: wrap; }
+  .tab { flex: 1; min-width: 120px; padding: 9px 8px; border-radius: var(--border-radius-md, 8px); border: 0.5px solid var(--color-border-secondary, #ccc); background: transparent; cursor: pointer; font-size: 13px; color: var(--color-text-secondary); text-align: center; transition: all .15s; line-height: 1.3; }
+  .tab.active { background: var(--color-background-info, #E6F1FB); color: var(--color-text-info, #185FA5); border-color: var(--color-border-info, #378ADD); font-weight: 500; }
+  .member-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.2rem; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 500; flex-shrink: 0; }
+  .member-info h2 { font-size: 17px; font-weight: 500; color: var(--color-text-primary); }
+  .member-info p { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .sleep-card { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--border-radius-md, 8px); margin-bottom: 1.2rem; border: 0.5px solid; }
+  .sleep-info { font-size: 12px; color: #27500A; }
+  .sleep-info strong { font-size: 14px; display: block; font-weight: 500; }
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 1.5px; background: var(--color-border-tertiary); }
+  .event { position: relative; margin-bottom: 10px; }
+  .dot { width: 16px; height: 16px; border-radius: 50%; position: absolute; left: -26px; top: 10px; }
+  .event-body { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 8px 12px; border: 0.5px solid var(--color-border-tertiary); }
+  .event-time { font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
+  .event-label { font-size: 13px; color: var(--color-text-primary); margin-top: 1px; }
+  .sleep-event .event-body { border-color: #639922; background: #EAF3DE; }
+  .sleep-event .event-time { color: #3B6D11; }
+  .sleep-event .event-label { color: #27500A; font-weight: 500; }
+</style>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab active" onclick="show('robert-week')">Robert<br>Semana</button>
+    <button class="tab" onclick="show('robert-weekend')">Robert<br>Fim de sem.</button>
+    <button class="tab" onclick="show('vitoria')">Vitória<br>Semana</button>
+    <button class="tab" onclick="show('maria')">Maria Alice<br>Semana</button>
+  </div>
+
+  <!-- ROBERT SEMANA -->
+  <div id="robert-week">
+    <div class="member-header">
+      <div class="avatar" style="background:#E6F1FB;color:#0C447C;">RO</div>
+      <div class="member-info"><h2>Robert</h2><p>Segunda a sexta</p></div>
+    </div>
+    <div class="sleep-card" style="background:#EAF3DE;border-color:#639922;">
+      <div style="font-size:18px;">🌙</div>
+      <div class="sleep-info"><strong>Dormir às 21h00</strong>Sono de 6h45 para acordar às 3h45</div>
+    </div>
+    <div class="timeline">
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">03h45</div><div class="event-label">⏰ Acordar</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">04h00 – 05h30</div><div class="event-label">📚 Estudar</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">05h30 – 07h00</div><div class="event-label">🏋️ Academia</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">07h00 – 07h15</div><div class="event-label">🚿 Banho / higiene</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">07h15 – 07h30</div><div class="event-label">☕ Café da manhã</div></div></div>
+      <div class="event"><div class="dot" style="background:#378ADD;"></div><div class="event-body"><div class="event-time">07h30 – 11h30</div><div class="event-label">💼 Trabalho — manhã</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">11h30 – 13h30</div><div class="event-label">🍽️ Almoço e descanso</div></div></div>
+      <div class="event"><div class="dot" style="background:#378ADD;"></div><div class="event-body"><div class="event-time">13h30 – 17h00</div><div class="event-label">💼 Trabalho — tarde</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">17h00 – 19h00</div><div class="event-label">👨‍👩‍👧 Tempo em família</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">19h00 – 20h00</div><div class="event-label">🍽️ Jantar</div></div></div>
+      <div class="event"><div class="dot" style="background:#B5D4F4;"></div><div class="event-body"><div class="event-time">20h00 – 21h00</div><div class="event-label">📖 Relaxamento / higiene</div></div></div>
+      <div class="event sleep-event"><div class="dot" style="background:#C0DD97;"></div><div class="event-body"><div class="event-time">21h00</div><div class="event-label">🌙 Dormir</div></div></div>
+    </div>
+  </div>
+
+  <!-- ROBERT FIM DE SEMANA -->
+  <div id="robert-weekend" style="display:none;">
+    <div class="member-header">
+      <div class="avatar" style="background:#FAEEDA;color:#633806;">RO</div>
+      <div class="member-info"><h2>Robert</h2><p>Sábado e domingo</p></div>
+    </div>
+    <div class="sleep-card" style="background:#EAF3DE;border-color:#639922;">
+      <div style="font-size:18px;">🌙</div>
+      <div class="sleep-info"><strong>Dormir às 21h00</strong>Sono de 8h para acordar às 5h00</div>
+    </div>
+    <div class="timeline">
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">05h00</div><div class="event-label">⏰ Acordar</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">05h15 – 07h00</div><div class="event-label">📚 Estudo / leitura pessoal</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">07h00 – 08h30</div><div class="event-label">🏋️ Academia / atividade ao ar livre</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">08h30 – 09h30</div><div class="event-label">☕ Café da manhã em família</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">09h30 – 12h00</div><div class="event-label">🏡 Projetos pessoais / lazer</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">12h00 – 14h00</div><div class="event-label">🍽️ Almoço em família</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">14h00 – 17h00</div><div class="event-label">👨‍👩‍👧 Passeio / tempo em família</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">17h00 – 19h00</div><div class="event-label">📖 Leitura / descanso</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">19h00 – 20h00</div><div class="event-label">🍽️ Jantar</div></div></div>
+      <div class="event"><div class="dot" style="background:#FAC775;"></div><div class="event-body"><div class="event-time">20h00 – 21h00</div><div class="event-label">🎬 Lazer / relaxamento</div></div></div>
+      <div class="event sleep-event"><div class="dot" style="background:#C0DD97;"></div><div class="event-body"><div class="event-time">21h00</div><div class="event-label">🌙 Dormir</div></div></div>
+    </div>
+  </div>
+
+  <!-- VITÓRIA -->
+  <div id="vitoria" style="display:none;">
+    <div class="member-header">
+      <div class="avatar" style="background:#FBEAF0;color:#72243E;">VI</div>
+      <div class="member-info"><h2>Vitória</h2><p>Segunda a sexta</p></div>
+    </div>
+    <div class="sleep-card" style="background:#EAF3DE;border-color:#639922;">
+      <div style="font-size:18px;">🌙</div>
+      <div class="sleep-info"><strong>Dormir às 21h00</strong>Sono de 9h30 para acordar às 6h30</div>
+    </div>
+    <div class="timeline">
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">06h30</div><div class="event-label">⏰ Acordar</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">06h30 – 07h00</div><div class="event-label">🚿 Banho e higiene pessoal</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">07h00 – 07h15</div><div class="event-label">👗 Se vestir / preparar</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">07h15 – 07h30</div><div class="event-label">☕ Café da manhã</div></div></div>
+      <div class="event"><div class="dot" style="background:#D4537E;"></div><div class="event-body"><div class="event-time">07h30 – 11h30</div><div class="event-label">💼 Trabalho — manhã</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">11h30 – 13h30</div><div class="event-label">🍽️ Almoço / pausa</div></div></div>
+      <div class="event"><div class="dot" style="background:#D4537E;"></div><div class="event-body"><div class="event-time">13h30 – 17h00</div><div class="event-label">💼 Trabalho — tarde</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">17h00 – 19h00</div><div class="event-label">👨‍👩‍👧 Família / buscar Maria Alice</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">19h00 – 20h00</div><div class="event-label">🍽️ Jantar</div></div></div>
+      <div class="event"><div class="dot" style="background:#F4C0D1;"></div><div class="event-body"><div class="event-time">20h00 – 21h00</div><div class="event-label">📖 Autocuidado / relaxamento</div></div></div>
+      <div class="event sleep-event"><div class="dot" style="background:#C0DD97;"></div><div class="event-body"><div class="event-time">21h00</div><div class="event-label">🌙 Dormir</div></div></div>
+    </div>
+  </div>
+
+  <!-- MARIA ALICE -->
+  <div id="maria" style="display:none;">
+    <div class="member-header">
+      <div class="avatar" style="background:#EEEDFE;color:#3C3489;">MA</div>
+      <div class="member-info"><h2>Maria Alice</h2><p>Segunda a sexta</p></div>
+    </div>
+    <div class="sleep-card" style="background:#EAF3DE;border-color:#639922;">
+      <div style="font-size:18px;">🌙</div>
+      <div class="sleep-info"><strong>Dormir às 21h00</strong>Sono de 9h45 para acordar às 6h45 — ótimo para crianças</div>
+    </div>
+    <div class="timeline">
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">06h45</div><div class="event-label">⏰ Acordar</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">07h00 – 07h15</div><div class="event-label">🛁 Banho</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">07h15 – 07h45</div><div class="event-label">☕ Café da manhã</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">07h45 – 08h00</div><div class="event-label">🎒 Preparar mochila / saída</div></div></div>
+      <div class="event"><div class="dot" style="background:#7F77DD;"></div><div class="event-body"><div class="event-time">08h00 – 17h00</div><div class="event-label">🏫 Creche</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">17h00 – 18h00</div><div class="event-label">🧸 Brincar / tempo livre</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">18h00 – 18h30</div><div class="event-label">🛁 Banho da tarde</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">18h30 – 19h00</div><div class="event-label">🍽️ Jantar</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">19h00 – 20h00</div><div class="event-label">📖 Leitura / história</div></div></div>
+      <div class="event"><div class="dot" style="background:#CECBF6;"></div><div class="event-body"><div class="event-time">20h00 – 21h00</div><div class="event-label">🌙 Ritual de dormir / acalmar</div></div></div>
+      <div class="event sleep-event"><div class="dot" style="background:#C0DD97;"></div><div class="event-body"><div class="event-time">21h00</div><div class="event-label">🌙 Dormir</div></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  ['robert-week','robert-weekend','vitoria','maria'].forEach(i => {
+    document.getElementById(i).style.display = i === id ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab').forEach((t, idx) => {
+    t.classList.toggle('active', ['robert-week','robert-weekend','vitoria','maria'][idx] === id);
+  });
+}
+</script>
